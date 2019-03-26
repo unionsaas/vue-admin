@@ -11,7 +11,10 @@ export default new Router({
             name: 'home',
             component: ()=> import('./views/Home.vue'),
             children:[{
-                path: '/dashboard', component: ()=>import('./components/Dashboard.vue')
+                path: 'dashboard', component: ()=>import('./components/Dashboard.vue')
+            },
+            {
+                path: 'appinfo', component: ()=>import('./views/app/AppInfo.vue')
             }]
         },
         {

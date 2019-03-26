@@ -1,6 +1,8 @@
 <template>
-  <div class="hello">
-      Dashboard 1111111111111111111111111
+  <div class="app">
+      <div class="content">
+          内容区
+      </div>
   </div>
 </template>
 
