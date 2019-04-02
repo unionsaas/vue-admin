@@ -19,9 +19,9 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item>
+                            <div style="float: right;">
                                 <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                            </el-form-item>
+                            </div>
                         </el-col>
                     </el-row>
                 </el-form>
