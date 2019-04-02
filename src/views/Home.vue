@@ -23,14 +23,16 @@
                 <el-breadcrumb-item>活动列表</el-breadcrumb-item>
                 <el-breadcrumb-item>活动详情</el-breadcrumb-item>
             </el-breadcrumb>
-            <router-view></router-view>
+            <div class="content">
+                <div class="view"><router-view></router-view></div>
+            </div>
+
         </el-main>
     </el-container>
     </div>
 </template>
 <style>
     html,body,#app,#home,.el-container,.el-menu{height: 100%;}
-    /* 设置内容区百分百高度显示 */
     .el-container{position: relative; top: -60px;padding-top: 60px;}
     .el-breadcrumb{
         background-color: #eff4f9;
@@ -44,7 +46,8 @@
 <style scoped>
     .header{height: 60px;background-color: #408be8;}
     .avatar{ height: 60px;background-color: aquamarine;}
-
+    .content{height: 100%; margin: -20px;overflow: hidden;overflow-y: auto;}
+    .view{margin: 20px;}
 </style>
 
 <script>
