@@ -19,13 +19,21 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <div style="float: right;">
-                                <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                            </div>
+                            <el-form-item label="申请编号">
+                                <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                            </el-form-item>
                         </el-col>
                     </el-row>
                 </el-form>
             </div>
+        </div>
+        <div class="operate">
+            <el-row>
+                <el-button icon="el-icon-plus">新增</el-button><el-button>审批</el-button><el-button>批量更新</el-button><el-button>导出Excel</el-button>
+                <div style="float: right;">
+                <el-button icon="el-icon-search">搜索</el-button>
+                </div>
+            </el-row>
         </div>
         <div class="table">
             <el-table
@@ -54,10 +62,11 @@
                 <el-table-column
                         fixed="right"
                         label="操作"
-                        width="100">
+                        width="130">
                     <template slot-scope="scope">
                         <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
                         <el-button type="text" size="small">编辑</el-button>
+                        <el-button type="text" size="small">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -73,7 +82,7 @@
 </template>
 
 <style scoped>
-    .search{border: solid 1px #eee;}
+    .search{border: solid 1px #eee;margin-bottom: 15px;}
     .search h1{margin:0;background-color: #f2f6fc;
         font-size: 14px;
         color: #909399;
@@ -82,7 +91,7 @@
         font-weight: 700;
         padding-left: 15px;}
     .search h1 i{margin-right: 10px;}
-    .search .s{padding: 15px;}
+    .search .s{padding: 22px 15px 0 15px;}
     .table{margin: 15px 0;border: solid 1px #eee;}
     .pagination{width: 420px;margin: 20px auto;}
 

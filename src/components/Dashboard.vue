@@ -1,8 +1,6 @@
 <template>
   <div class="app">
-      <div class="content">
-          内容区
-      </div>
+      Dashboard.vue
   </div>
 </template>
 
