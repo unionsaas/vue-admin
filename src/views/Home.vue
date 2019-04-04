@@ -1,10 +1,8 @@
 <template>
     <div id="home">
     <div class="header">
-        <el-menu class="el-menu-header-left" mode="horizontal" @select="handleSelect"  @open="handleOpen" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-            <el-menu-item><i class="el-icon-menu"></i></el-menu-item>
-        </el-menu>
-        <el-menu class="el-menu-header-right" mode="horizontal" @select="handleSelect"  @open="handleOpen" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+        <div class="el-menu-header-left"><img src="../assets/umqlogo.png" class="logo"></div>
+        <el-menu class="el-menu-header-right" mode="horizontal" @select="handleSelect"  @open="handleOpen" background-color="#408be8" text-color="#fff" active-text-color="#ffd04b">
             <el-submenu index="2">
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="2-1">选项1</el-menu-item>
@@ -25,10 +23,9 @@
         </el-menu>
     </div>
     <el-container>
-        <el-aside width="200px">
-            <el-menu :default-active="$route.path" @select="handleSelect"
-                     @open="handleOpen"
-                     @close="handleClose">
+        <el-aside width="">
+            <el-menu :default-active="$route.path" @select="handleSelect" @open="handleOpen" @close="handleClose" :collapse="isCollapse" class="el-menu-vertical">
+                <el-menu-item index="aside-btn" class="aside-btn"><i class="el-icon-menu"></i> </el-menu-item>
                 <el-menu-item index="/dashboard"><i class="el-icon-menu"></i> <span>仪表盘</span></el-menu-item>
                 <el-menu-item index="3"><i class="el-icon-menu"></i> <span>项目配置</span></el-menu-item>
                 <el-submenu index="/">
@@ -36,6 +33,10 @@
                     <el-menu-item index="/appinfo">表格页面</el-menu-item>
                     <el-menu-item index="4-2">项目管理</el-menu-item>
                     <el-menu-item index="4-3">查看日志</el-menu-item>
+                </el-submenu>
+                <el-submenu index="">
+                    <template slot="title"><i class="el-icon-menu"></i> <span>计划任务</span></template>
+                    <el-menu-item index="/appinfo">任务管理</el-menu-item>
                 </el-submenu>
                 <el-menu-item index="5"><i class="el-icon-setting"></i> <span>设置</span></el-menu-item>
             </el-menu>
@@ -72,14 +73,22 @@
     .el-menu.el-menu--horizontal {
          border-bottom: none;
     }
+    .el-menu-vertical:not(.el-menu--collapse) {
+        width: 200px;
+    }
 
-    /* #408be8*/
-    .header{height: 60px;background-color:#545c64;position: relative;z-index: 99999;}
+    /* #408be8*/ /*#545c64*/
+    .header{height: 60px;background-color:#408be8;position: relative;z-index: 99999;}
     .el-menu-header-left{ float: left;}
     .el-menu-header-right{ float: right; }
     .avatar{ height: 60px;background-color: aquamarine;}
     .content{height: 100%; margin: -20px;overflow: hidden;overflow-y: auto;}
     .view{margin: 20px;}
+
+    .aside-btn{ height: 40px;line-height: 40px;text-align: center; background: #eff4f9;color:#606266; }
+
+    .logo{height: 40px;width: 100px;margin: 10px 0 0 20px;}
+
 </style>
 
 <script>
@@ -88,12 +97,15 @@ export default {
     name: 'home',
     data() {
         return {
-            activeIndex: '1',
-            activeIndex2: '1'
+            isCollapse:false, //侧边收缩
         }
     },
     methods: {
         handleSelect(key, keyPath) {
+            if(key=='aside-btn'){
+                this.isCollapse = !this.isCollapse
+                return;
+            }
             console.log('handleSelect', key, keyPath)
             this.$router.push(key)
         },
