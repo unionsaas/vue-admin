@@ -10,12 +10,11 @@ export default new Router({
             path: '/',
             name: 'home',
             component: ()=> import('./views/Home.vue'),
-            children:[{
-                path: 'dashboard', component: ()=>import('./components/Dashboard.vue')
-            },
-            {
-                path: 'appinfo', component: ()=>import('./views/app/AppInfo.vue')
-            }]
+            children:[
+                {path: 'dashboard', component: ()=>import('./components/Dashboard.vue')},
+                {path: 'appinfo', component: ()=>import('./views/app/AppInfo.vue')},
+                {path: 'taskAdd', component: ()=>import('./views/task/TaskAdd.vue')}
+            ]
         },
         {
             path: '/login',

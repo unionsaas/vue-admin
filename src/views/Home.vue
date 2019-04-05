@@ -25,18 +25,20 @@
     <el-container>
         <el-aside width="">
             <el-menu :default-active="$route.path" @select="handleSelect" @open="handleOpen" @close="handleClose" :collapse="isCollapse" class="el-menu-vertical">
-                <el-menu-item index="aside-btn" class="aside-btn"><i class="el-icon-menu"></i> </el-menu-item>
+                <el-menu-item index="aside-btn" class="aside-btn"><i :class="asideIcon"></i> </el-menu-item>
                 <el-menu-item index="/dashboard"><i class="el-icon-menu"></i> <span>仪表盘</span></el-menu-item>
                 <el-menu-item index="3"><i class="el-icon-menu"></i> <span>项目配置</span></el-menu-item>
-                <el-submenu index="/">
+                <el-submenu index="dev">
                     <template slot="title"><i class="el-icon-menu"></i> <span>开发平台</span></template>
                     <el-menu-item index="/appinfo">表格页面</el-menu-item>
                     <el-menu-item index="4-2">项目管理</el-menu-item>
                     <el-menu-item index="4-3">查看日志</el-menu-item>
                 </el-submenu>
-                <el-submenu index="">
+                <el-submenu index="task">
                     <template slot="title"><i class="el-icon-menu"></i> <span>计划任务</span></template>
                     <el-menu-item index="/appinfo">任务管理</el-menu-item>
+                    <el-menu-item index="/execlist">运行记录</el-menu-item>
+                    <el-menu-item index="/taskAdd">新增任务</el-menu-item>
                 </el-submenu>
                 <el-menu-item index="5"><i class="el-icon-setting"></i> <span>设置</span></el-menu-item>
             </el-menu>
@@ -98,12 +100,14 @@ export default {
     data() {
         return {
             isCollapse:false, //侧边收缩
+            asideIcon:'el-icon-d-arrow-left'
         }
     },
     methods: {
         handleSelect(key, keyPath) {
             if(key=='aside-btn'){
                 this.isCollapse = !this.isCollapse
+                this.asideIcon = this.isCollapse?'el-icon-d-arrow-right':'el-icon-d-arrow-left'
                 return;
             }
             console.log('handleSelect', key, keyPath)

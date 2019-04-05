@@ -29,7 +29,7 @@
         </div>
         <div class="operate">
             <el-row>
-                <el-button icon="el-icon-plus">新增</el-button><el-button>审批</el-button><el-button>批量更新</el-button><el-button>导出Excel</el-button>
+                <el-button icon="el-icon-plus" @click="$router.push('/taskAdd')">新增</el-button><el-button>审批</el-button><el-button>批量更新</el-button><el-button>导出Excel</el-button>
                 <div style="float: right;">
                 <el-button icon="el-icon-search">搜索</el-button>
                 </div>
@@ -40,7 +40,7 @@
                     :data="tableData"
                     stripe
                     ref="multipleTable"
-                    style="width: 100%">
+                    style="width: 100%"  :default-sort = "{prop: 'date', order: 'descending'}">
                 <el-table-column
                         type="selection"
                         width="55">
@@ -48,7 +48,7 @@
                 <el-table-column
                         prop="date"
                         label="日期"
-                        width="180">
+                        width="180" sortable>
                 </el-table-column>
                 <el-table-column
                         prop="name"
@@ -123,6 +123,46 @@ export default {
                 date: '2016-05-03',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
             }]
         }
     },
@@ -132,6 +172,9 @@ export default {
         },
         onSubmit() {
             console.log('submit!')
+        },
+        addBtnClick(){
+            this.$router.push('/taskAdd')
         }
     }
 }
